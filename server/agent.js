@@ -1,44 +1,21 @@
 import { config } from 'dotenv';
 config();
-
 import { ChatAnthropic } from "@langchain/anthropic";
 import { createReactAgent } from '@langchain/langgraph/prebuilt';
-import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
 import data from './data.js';
-import { Document } from '@langchain/core/documents';
-import { MemoryVectorStore } from 'langchain/vectorstores/memory';
-import { OpenAIEmbeddings } from "@langchain/openai";
 import {tool} from '@langchain/core/tools'
 import {z} from 'zod'
-
-
+import {MemorySaver} from '@langchain/langgraph'
+import { vectorStore,addYTVideoToVectorStore } from './embeddings.js';
 const video1 = data[0];
-const docs = [
-    new Document({
-        pageContent: video1.transcript,
-        metadata: { video_id: video1.video_id }
-    })
-];
+await addYTVideoToVectorStore(video1);
 
 
-const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: 1000,
-    chunkOverlap: 200
-});
-const chunks = await splitter.splitDocuments(docs);
-
-
-const embeddings = new OpenAIEmbeddings({
-    apiKey: process.env.OPENAI_API_KEY
-});
-
-
-const vectorStore = new MemoryVectorStore(embeddings);
-await vectorStore.addDocuments(chunks);
-
-const retrievalTool = tool(async({query})=>{
-    const retrievedDocs = await vectorStore.similaritySearch(query,3);
+const retrievalTool = tool(async({query},{configurable : { video_id }})=>{
+    const retrievedDocs = await vectorStore.similaritySearch(query,3,(doc)=> doc.metadata.video_id === video_id
+);
     const serializedDocs = retrievedDocs.map((doc)=> doc.pageContent).join('\n')
+    console.log(video_id)
     return serializedDocs
 
 
@@ -58,17 +35,25 @@ const llm = new ChatAnthropic({
     modelName: 'claude-sonnet-4-20250514',
     apiKey: process.env.ANTHROPIC_API_KEY
 });
-
+const memorySaver = new MemorySaver()
 
 const agent = createReactAgent({
     llm,
-    tools: [retrievalTool]
+    tools: [retrievalTool],
+    checkpointer : memorySaver
 });
+const video_id = "CPu3e9__7W8"
 
 
 const results = await agent.invoke({
-    messages: [{ role: 'user', content: 'which language the author is trying to learn?'}]
-});
+    messages: [{ role: 'user', content: 'provide me the video summary in 100 words'}]
+},{configurable : {thread_id : 1,video_id}});
+
+
+
+
+
 console.log(results.messages.at(-1)?.content)
+
 
 
