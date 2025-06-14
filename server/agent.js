@@ -7,12 +7,11 @@ import {tool} from '@langchain/core/tools'
 import {z} from 'zod'
 import {MemorySaver} from '@langchain/langgraph'
 import { vectorStore,addYTVideoToVectorStore } from './embeddings.js';
-const video1 = data[0];
-await addYTVideoToVectorStore(video1);
+
 
 
 const retrievalTool = tool(async({query},{configurable : { video_id }})=>{
-    const retrievedDocs = await vectorStore.similaritySearch(query,3,(doc)=> doc.metadata.video_id === video_id
+    const retrievedDocs = await vectorStore.similaritySearch(query,3,{ video_id}
 );
     const serializedDocs = retrievedDocs.map((doc)=> doc.pageContent).join('\n')
     console.log(video_id)
