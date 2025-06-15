@@ -34,7 +34,7 @@ Hosted Live: [https://server-iota-liart-38.vercel.app/](https://server-iota-liar
 ---
 
 ## 💡 Project Description
-GenZ AI is a **YouTube video assistant** that can:
+It is a **YouTube video assistant** that can:
 - Answer questions about provided YouTube videos.
 - You can ask the agent any question about the provided video context.
 - Scrape YouTube video transcripts using **Bright Data**.
@@ -91,24 +91,7 @@ It works even in **multi-turn conversations** where you can keep asking follow-u
 - 🌐 Fully deployed on **Vercel**.
 
 ---
-🌍 **Deployed Link**  
-👉 [https://server-iota-liart-38.vercel.app/](https://server-iota-liart-38.vercel.app/)
 
----
-
-## 📌 Key APIs & Tools
-
-- **LangChain:** Tool orchestration and memory handling.
-- **LangGraph:** Multi-step agent flow management.
-- **Claude-3 Sonnet API (Anthropic):** Language model for generating responses.
-- **Bright Data API:** Web scraping for YouTube transcripts.
-- **Vector Store (PostgreSQL):** Document storage and scalable similarity search.
-- **RAG (Retrieval Augmented Generation):** Document retrieval for precise context.
-- **Agentic AI (React Agent):** Memory and flow management for continuous conversations.
-- **Express.js:** Backend server handling API routes and agent invocation.
-- **React + TypeScript:** Frontend chat interface with real-time updates.
-
----
 🌍 **Deployed Link**  
 👉 [https://server-iota-liart-38.vercel.app/](https://server-iota-liart-38.vercel.app/)
 
