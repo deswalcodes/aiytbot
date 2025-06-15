@@ -1,4 +1,4 @@
-# GenZ AI Chat Agent 🎧🤖
+#  AI Chat Agent for Youtube Videos 🎧🤖
 
 A modern AI-powered agentic chat application that integrates **YouTube video understanding** using **RAG (Retrieval Augmented Generation)**, **LangGraph**, **LangChain**, **Claude API**, **Bright Data scraping**, and **PostgreSQL-backed vector store**.
 
@@ -35,13 +35,31 @@ Hosted Live: [https://server-iota-liart-38.vercel.app/](https://server-iota-liar
 
 ## 💡 Project Description
 GenZ AI is a **YouTube video assistant** that can:
-- Answer questions about YouTube videos.
+- Answer questions about provided YouTube videos.
+- You can ask the agent any question about the provided video context.
 - Scrape YouTube video transcripts using **Bright Data**.
 - Use **RAG** to retrieve contextually relevant video information.
 - Remember the ongoing conversation using **Thread IDs**.
 
 It combines the power of **LangChain tools, agentic AI flows, web scraping, PostgreSQL-based vector storage, and Claude-3 Sonnet API** to provide **intelligent, context-aware responses.**
 
+---
+## 💡 Example Use Case
+
+Imagine you found an interesting **podcast or a scientific conference video** on YouTube, but you don’t have time to watch the entire thing.
+
+👉 Simply paste the YouTube video link in the chat, for example:  
+`Let's talk about this video - https://www.youtube.com/watch?v=abc123xyz`
+
+The agent will:
+1. Automatically scrape the transcript.
+2. Store it in a vector database for quick retrieval.
+3. Allow you to **ask deep, fact-based questions** like:  
+   - _"What were the key points discussed in the second half of this podcast?"_  
+   - _"What does the speaker say about climate change in this video?"_  
+   - _"What scientific evidence was presented in this session?"_
+
+It works even in **multi-turn conversations** where you can keep asking follow-up questions without sending the video link again!
 ---
 
 ## 🔄 Application Flow
@@ -71,6 +89,43 @@ It combines the power of **LangChain tools, agentic AI flows, web scraping, Post
 - ⚡ Real-time chat interface.
 - 🔄 New Chat option to reset conversation and memory.
 - 🌐 Fully deployed on **Vercel**.
+
+---
+🌍 **Deployed Link**  
+👉 [https://server-iota-liart-38.vercel.app/](https://server-iota-liart-38.vercel.app/)
+
+---
+
+## 📌 Key APIs & Tools
+
+- **LangChain:** Tool orchestration and memory handling.
+- **LangGraph:** Multi-step agent flow management.
+- **Claude-3 Sonnet API (Anthropic):** Language model for generating responses.
+- **Bright Data API:** Web scraping for YouTube transcripts.
+- **Vector Store (PostgreSQL):** Document storage and scalable similarity search.
+- **RAG (Retrieval Augmented Generation):** Document retrieval for precise context.
+- **Agentic AI (React Agent):** Memory and flow management for continuous conversations.
+- **Express.js:** Backend server handling API routes and agent invocation.
+- **React + TypeScript:** Frontend chat interface with real-time updates.
+
+---
+🌍 **Deployed Link**  
+👉 [https://server-iota-liart-38.vercel.app/](https://server-iota-liart-38.vercel.app/)
+
+---
+
+## 📌 Key APIs & Tools
+
+- **LangChain:** Tool orchestration and memory handling.
+- **LangGraph:** Multi-step agent flow management.
+- **Claude-3 Sonnet API (Anthropic):** Language model for generating responses.
+- **Bright Data API:** Web scraping for YouTube transcripts.
+- **Vector Store (PostgreSQL):** Document storage and scalable similarity search.
+- **RAG (Retrieval Augmented Generation):** Document retrieval for precise context.
+- **Agentic AI (React Agent):** Memory and flow management for continuous conversations.
+- **Express.js:** Backend server handling API routes and agent invocation.
+- **React + TypeScript:** Frontend chat interface with real-time updates.
+
 
 ---
 
